@@ -4,7 +4,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_marginLeft="40dip"
         android:elevation="20dp"
         android:layout_marginRight="40dp"
@@ -15,55 +14,32 @@
             android:background="@color/white"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:padding="20dp"
-                android:text="Add New Category"
-                android:textSize="32dp"
-                android:fontFamily="@font/futuramedium"
-                android:textColor="@color/cardview_dark_background"/>
+            <RelativeLayout
+                android:id="@+id/titleheader"
+                android:layout_width="match_parent"
+                android:background="@drawable/bluegrad"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:padding="20dp"
+                    android:text="Add New Category"
+                    android:textSize="32dp"
+                    android:fontFamily="@font/futuramedium"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/categoryrecycler"
-                android:layout_below="@id/title"
+                android:layout_below="@id/titleheader"
+                android:layout_centerHorizontal="true"
+                android:isScrollContainer="false"
                 android:layout_width="match_parent"
-                android:padding="20dp"
+                android:padding="10dp"
                 android:layout_height="wrap_content">
-
             </android.support.v7.widget.RecyclerView>
-
-
-            <!--bottom toolbar-->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_below="@id/categoryrecycler"
-                    android:background="@drawable/bluegrad"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/futuramedium"
-                        android:textColor="@color/white"
-                        android:padding="20dp"
-                        android:layout_alignParentStart="true"
-                        android:textSize="22sp"
-                        android:text="Cancel"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/futuramedium"
-                        android:textColor="@color/white"
-                        android:padding="20dp"
-                        android:layout_alignParentEnd="true"
-                        android:textSize="22sp"
-                        android:text="Save"/>
-
-                </RelativeLayout>
 
         </RelativeLayout>
 

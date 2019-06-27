@@ -2,6 +2,7 @@ package com.example.android.recyclerviewproject.Activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+
 import java.lang.reflect.Type;
 
 import android.graphics.Canvas;
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements AddServDialog.Add
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         SharedPreferences sharedPreferences = getSharedPreferences("SHARED PREF", MODE_PRIVATE);
         SharedPreferences myHrs = getSharedPreferences("my_hours", MODE_PRIVATE);
         sharedPreferences.edit().clear().commit();
@@ -75,17 +75,17 @@ public class MainActivity extends AppCompatActivity implements AddServDialog.Add
 //           double passedHour = (double) (data.getExtras().get("passed_hour"));
 //           double deleteHrs = (double) (data.getExtras().get("passed_delete"));
 //           addTotalHours(passedHour);
-          // subtractHours(deleteHrs);
-           //TODO Call save data in program activity
+            // subtractHours(deleteHrs);
+            //TODO Call save data in program activity
             //saveData();
-          // initRecyclerView();
+            // initRecyclerView();
         }
     }
 
     private void initRecyclerView() {
         myRecycler = findViewById(R.id.recycler_view);
         introMsg = findViewById(R.id.introview);
-        if(myList.size() == 0){
+        if (myList.size() == 0) {
             introMsg.setVisibility(View.VISIBLE);
             myRecycler.setVisibility(View.INVISIBLE);
         }
@@ -113,23 +113,25 @@ public class MainActivity extends AppCompatActivity implements AddServDialog.Add
 
     }
 
-    public void openDeleteDialog(RecyclerView.ViewHolder view){
+    public void openDeleteDialog(RecyclerView.ViewHolder view) {
         DeleteProgramDialog myDialog = new DeleteProgramDialog();
         myDialog.setView(view);
         myDialog.show(getSupportFragmentManager(), "Delete Program");
     }
 
-    private void updateTotalHours(double i){
+    private void updateTotalHours(double i) {
         totalHours = i;
     }
 
-    private void addTotalHours(double i){
+    private void addTotalHours(double i) {
         totalHours += i;
     }
 
-    private void subtractHours(double i) { totalHours -= i; }
+    private void subtractHours(double i) {
+        totalHours -= i;
+    }
 
-    private void openProgActivity(int pos){
+    private void openProgActivity(int pos) {
         //opens up ProgramActivity layout
         Intent myInt = new Intent(this, ProgramActivity.class);
         ExampleItem temp = myList.get(pos);
@@ -140,13 +142,13 @@ public class MainActivity extends AppCompatActivity implements AddServDialog.Add
     }
 
 
-//    ADD NEW CATEGORY BUTTON
+    //    ADD NEW CATEGORY BUTTON
     private void initAddButton() {
         addServBtn = findViewById(R.id.addbtn);
         addServBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               openDialog();
+                openDialog();
             }
         });
     }
@@ -159,18 +161,19 @@ public class MainActivity extends AppCompatActivity implements AddServDialog.Add
     }
 
     //refreshes layout with new saved data
-    private void loadData(){
+    private void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences("SHARED PREF", MODE_PRIVATE);
         Gson myGson = new Gson();
         String json = sharedPreferences.getString("service_list", null);
-        Type myType = new TypeToken<ArrayList <ExampleItem> >(){}.getType();
+        Type myType = new TypeToken<ArrayList<ExampleItem>>() {
+        }.getType();
         myList = myGson.fromJson(json, myType);
-        if(myList == null) myList = new ArrayList<>();
+        if (myList == null) myList = new ArrayList<>();
 
         double temp = Double.longBitsToDouble(sharedPreferences.getLong("my_hours", Double.doubleToLongBits(0)));
         totalHours = temp;
 
-        }
+    }
 
     @Override
     public void applyText(String name, double hrs, String myRole, RandomColor picker) {
@@ -184,7 +187,8 @@ public class MainActivity extends AppCompatActivity implements AddServDialog.Add
         //initRecyclerView();
     }
 
-    @Override //implements interface AddServeDialogListener; function is executed AFTER 'save' is clicked on dialog layout
+    @Override
+    //implements interface AddServeDialogListener; function is executed AFTER 'save' is clicked on dialog layout
     public void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences("SHARED PREF", Context.MODE_PRIVATE);
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
