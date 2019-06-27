@@ -4,11 +4,13 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.android.recyclerviewproject.Adapter.ExampleAdapter;
@@ -36,7 +38,7 @@ public class CategoryActivity extends AppCompatActivity {
     private RecyclerView myRecycler;
     private MainCategoryAdapter myAdapter;
     private RecyclerView.LayoutManager myLayout;
-    private TextView introMsg;
+    private CardView introMsg;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,10 +55,9 @@ public class CategoryActivity extends AppCompatActivity {
     private void createAvailableCat(){
         availableCat = new ArrayList<>();
         myList = new ArrayList<>();
-        availableCat.add(new Category("School"));
-        availableCat.add(new Category("Community"));
-        availableCat.add(new Category("Custom"));
-        myList = availableCat;
+        availableCat.add(new Category("School", 0));
+        availableCat.add(new Category("Community", 1));
+        availableCat.add(new Category("Custom", 2));
     }
 
     private void loadData() {
@@ -95,7 +96,6 @@ public class CategoryActivity extends AppCompatActivity {
         introMsg = findViewById(R.id.introview);
         if (myList.size() == 0) {
             introMsg.setVisibility(View.VISIBLE);
-            System.out.println("what the fuck");
             myRecycler.setVisibility(View.INVISIBLE);
         }
         hoursHeader = findViewById(R.id.numhrs_lbl);

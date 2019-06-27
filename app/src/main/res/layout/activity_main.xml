@@ -67,10 +67,11 @@
        android:layout_height="match_parent">
 
       <android.support.v7.widget.CardView
+          android:id="@+id/introview"
           android:layout_width="match_parent"
           app:cardCornerRadius="50dp"
           app:cardElevation="5dp"
-          android:visibility="invisible"
+          android:visibility="visible"
           app:cardUseCompatPadding="true"
           android:background="@color/white"
           android:layout_height="match_parent"
@@ -83,7 +84,6 @@
              android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/introview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:visibility="visible"
@@ -99,6 +99,7 @@
       </android.support.v7.widget.CardView>
 
       <RelativeLayout
+          android:id="@+id/main_view"
           android:layout_width="match_parent"
           android:visibility="visible"
           android:padding="20dp"
@@ -110,6 +111,8 @@
              app:cardCornerRadius="50dp"
              android:layout_width="match_parent"
              android:layout_centerHorizontal="true"
+             android:nestedScrollingEnabled="false"
+             android:isScrollContainer="false"
              android:layout_height="match_parent"
              android:visibility="visible"
              android:scrollbars="vertical" />
