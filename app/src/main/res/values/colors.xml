@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white">#ffffff</color>
+    <color name="greyhex">#d3d3d3</color>
+
+    <!--red_grad.xml-->
+    <color name="redStart">#990716</color>
+    <color name="redEnd">#e87884</color>
+    <color name="redMid">#edb39e</color>
+
+    <!--orange_grad.xml-->
+    <color name="orEnd">#e86214</color>
+    <color name="orMid">#f2935c</color>
+    <color name="orStart">#ffe2b2</color>
+
+    <!--yellow_grad.xml-->
+    <color name="yellEnd">#ffc700</color>
+    <color name="yellStart">#ffc5af</color>
+    <color name="yellMid">#ffdd66</color>
+
+    <!--blue_grad.xml-->
+    <color name="blueEnd">#1335a8</color>
+    <color name="blueMid">#465dcf</color>
+    <color name="blueStart">#4c92ed</color>
+
+    <!--green_grad.xml-->
+
+    <!--purp_grad.xml-->
+
+    <!--pink_grad.xml-->
+
+</resources>

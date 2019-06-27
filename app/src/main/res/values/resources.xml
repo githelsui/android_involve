@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="random_gradients">
+        <item>@drawable/red_grad</item>
+        <item>@drawable/orange_grad</item>
+        <item>@drawable/yellow_grad</item>
+    </array>
+</resources>

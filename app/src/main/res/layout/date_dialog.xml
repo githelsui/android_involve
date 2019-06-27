@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_constraintCircleRadius="20dp"
+    android:scrollbars="vertical"
+    android:fadeScrollbars="true"
+    android:background="@color/cardview_dark_background"
+    android:padding="1dp">
+
+    <ImageView
+        android:id="@+id/closebtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_x"
+        android:padding="2dp"/>
+
+    <TextView
+        android:id="@+id/edit_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="35sp"
+        android:padding="14dp"
+        android:fontFamily="@font/myriadpro_light"
+        android:text="Edit Dates"/>
+
+    <!--Start Date View-->
+    <RelativeLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:layout_constraintCircleRadius="20dp"
+        android:visibility="visible"
+        android:id="@+id/start_dateview"
+        android:background="@color/white"
+        android:layout_centerVertical="true"
+        android:padding="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/edit_title"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/datestart_lbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="18dp"
+            android:textSize="25sp"
+            android:fontFamily="@font/myriadpro_light"
+            android:layout_centerHorizontal="true"
+            android:text="Date of Event "/>
+        <DatePicker
+            android:id="@+id/date_started"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_below="@id/datestart_lbl"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <!--End Date View-->
+    <RelativeLayout
+        android:id="@+id/end_dateview"
+        android:visibility="invisible"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_below="@id/edit_title"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/date_endlbl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="18dp"
+            android:textSize="25sp"
+            android:fontFamily="@font/myriadpro_light"
+            android:layout_centerHorizontal="true"
+            android:text="Date of Completion "/>
+
+
+        <DatePicker
+            android:id="@+id/date_end"
+            android:datePickerMode="spinner"
+            android:calendarViewShown="false"
+            android:layout_below="@id/date_endlbl"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/continue_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:onClick="onClick"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/end_dateview"
+        android:padding="20dp"
+        android:fontFamily="@font/myriadpro_light"
+        android:clickable="true"/>
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/back_btn"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BACK"
+        android:layout_alignParentLeft="true"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:onClick="onClick"
+        android:layout_below="@id/end_dateview"
+        android:padding="20dp"
+        android:fontFamily="@font/myriadpro_light"
+        android:clickable="true"/>
+
+</RelativeLayout>
