@@ -9,8 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.android.recyclerviewproject.Adapter.ExampleAdapter;
+import com.example.android.recyclerviewproject.Adapter.MainCategoryAdapter;
 import com.example.android.recyclerviewproject.Custom_Object.Category;
 import com.example.android.recyclerviewproject.Custom_Object.ExampleItem;
 import com.example.android.recyclerviewproject.Dialog.AddCategory;
@@ -24,9 +26,17 @@ import java.util.ArrayList;
 
 public class CategoryActivity extends AppCompatActivity {
 
+//    Header
     private ArrayList<Category> myList, availableCat;
     private double totalHours;
+    private TextView hoursHeader;
     private ImageView addServBtn;
+
+//    RecyclerView
+    private RecyclerView myRecycler;
+    private MainCategoryAdapter myAdapter;
+    private RecyclerView.LayoutManager myLayout;
+    private TextView introMsg;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,15 +44,19 @@ public class CategoryActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
         //loadData();
+
         createAvailableCat();
+        initRecyclerView();
         initAddButton();
     }
 
     private void createAvailableCat(){
         availableCat = new ArrayList<>();
+        myList = new ArrayList<>();
         availableCat.add(new Category("School"));
         availableCat.add(new Category("Community"));
         availableCat.add(new Category("Custom"));
+        myList = availableCat;
     }
 
     private void loadData() {
@@ -74,6 +88,38 @@ public class CategoryActivity extends AppCompatActivity {
         dialog.setCategories(availableCat);
         dialog.setMyCont(CategoryActivity.this);
         dialog.show(getSupportFragmentManager(), "Add Category");
+    }
+
+    private void initRecyclerView() {
+        myRecycler = findViewById(R.id.recycler_view);
+        introMsg = findViewById(R.id.introview);
+        if (myList.size() == 0) {
+            introMsg.setVisibility(View.VISIBLE);
+            System.out.println("what the fuck");
+            myRecycler.setVisibility(View.INVISIBLE);
+        }
+        hoursHeader = findViewById(R.id.numhrs_lbl);
+        hoursHeader.setText(totalHours + " hours");
+        myRecycler.setHasFixedSize(true);
+        myLayout = new LinearLayoutManager(this);
+        myAdapter = new MainCategoryAdapter(myList, this);
+        myRecycler.setLayoutManager(myLayout);
+        myRecycler.setAdapter(myAdapter);
+//        myAdapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(int pos) {
+//                openProgActivity(pos);
+//            }
+//        });
+//        ItemTouchHelper.SimpleCallback itemTouchHelperCallback =
+//                new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, new RecyclerItemTouchHelper.RecyclerItemTouchHelperListener() {
+//                    @Override
+//                    public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
+//                        openDeleteDialog(viewHolder);
+//                    }
+//                });
+//        new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(myRecycler);
+
     }
 
 }
